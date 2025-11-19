@@ -3,7 +3,8 @@
 Currently defines the `Video` model which maps to the `videos` table.
 """
 
-from sqlalchemy import Column, Integer, String, Float, BigInteger
+from sqlalchemy import Column, Integer, String, Float, BigInteger, DateTime
+from sqlalchemy.sql import func
 from .database import Base
 
 
@@ -39,4 +40,8 @@ class Video(Base):
     published_at = Column(String)               # 원본 게시 일시 (ISO 포맷)
     published_date = Column(String)             # 게시 날짜 (YYYY-MM-DD)
     published_time = Column(String)             # 게시 시간 (HH:MM:SS)
-    collected_at = Column(String)               # 데이터 수집 시점
+    
+    # 6. 데이터베이스 타임스탬프 (자동 관리)
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
+

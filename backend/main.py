@@ -10,11 +10,17 @@ from sqlalchemy import func
 from typing import List
 from fastapi.middleware.cors import CORSMiddleware
 
+# Caching
+from cachetools import cached, TTLCache
+
 from .database import get_db
 from .models import Video
 from . import schemas
 
 app = FastAPI(title="Beauty Dashboard API")
+
+# 5-minute TTL cache for 128 items
+cache = TTLCache(maxsize=128, ttl=300)
 
 # 1. CORS 설정 (React 프론트엔드에서 접속 허용)
 app.add_middleware(
@@ -36,10 +42,12 @@ def read_videos(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
 # 3. 엔드포인트: 브랜드별 통계 요약 (대시보드 차트용) ⭐ 핵심 기능
 @app.get("/dashboard/stats", response_model=List[schemas.BrandStats])
+@cached(cache)
 def read_dashboard_stats(db: Session = Depends(get_db)):
     """
     브랜드별 총 조회수, 총 좋아요, 평균 참여율 등을 계산해서 반환합니다.
     (SQL의 GROUP BY와 같은 역할)
+    - [Cache Applied] 5분 단위로 캐싱됩니다.
     """
     # SQL: SELECT brand, SUM(view_count), ... FROM videos GROUP BY brand
     stats = db.query(

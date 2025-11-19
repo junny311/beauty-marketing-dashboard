@@ -62,7 +62,6 @@ def init_db():
                 engagement_rate=row['engagement_rate'],
                 duration=row.get('duration'),
                 tags=str(row.get('tags')),
-                collected_at=row.get('collected_at'),
                 published_date=row.get('published_date'),
                 published_time=row.get('published_time')
             )
