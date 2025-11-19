@@ -145,22 +145,13 @@ python scripts/crawl_youtube.py
 
 ## 📈 주요 인사이트
 
-- **주요 뷰티 브랜드 5개**의 **150개 이상의 비디오** 분석
+- **주요 뷰티 브랜드 3개**의 **150개 이상의 비디오** 분석
 - 평균 채널 참여율 **3.2%**, 최상위 성과 비디오는 7% 이상 도달
 - 최대 참여를 위한 최적의 게시 시간대는 **주중 저녁 8시-10시 (KST)**
 
-## 📸 스크린샷
 
-| 대시보드 개요 | 트렌드 분석 | 데이터 테이블 |
-| :---: | :---: | :---: |
-| ![대시보드 개요](https://via.placeholder.com/400x250.png?text=Dashboard+Main) | ![트렌드 분석](https://via.placeholder.com/400x250.png?text=Analytics+Chart) | ![데이터 테이블](https://via.placeholder.com/400x250.png?text=Data+Table+View) |
 
-## 🤔 기술적 과제
 
-1.  **API 속도 제한:** YouTube API는 엄격한 할당량 제한이 있습니다.
-    - **해결책:** API 응답에 대한 캐싱 레이어를 구현하고, 재시도를 위한 지수 백오프를 적용하여 제한을 초과하지 않으면서 안정적이고 효율적인 데이터 가져오기를 보장했습니다.
-2.  **데이터 일관성:** 비디오 통계(조회수, 좋아요)는 지속적으로 변경됩니다.
-    - **해결책:** 데이터 신선도를 추적하기 위해 `created_at` 및 `updated_at` 타임스탬프를 사용하여 데이터 모델을 설계하고, 주기적으로 비디오 메트릭을 업데이트하는 예약된 작업을 구현했습니다.
 
 ## 🗺️ 로드맵
 
@@ -170,12 +161,10 @@ python scripts/crawl_youtube.py
 - [ ] 주요 지표를 요약하는 자동화된 주간 이메일 보고서 개발
 - [ ] 바이럴 비디오 잠재력을 예측하는 머신러닝 모델 추가
 
-## 📜 라이선스
 
-이 프로젝트는 **MIT 라이선스**에 따라 라이선스가 부여됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하십시오.
 
 ## 📞 연락처
 
-- **작성자:** Your Name
-- **GitHub:** [@your-username](https://github.com/your-username)
-- **이메일:** your-email@example.com
+- **작성자:** junny311
+- **GitHub:** [@junny311](https://github.com/junny311)
+- **이메일:** lyj82890@gmail.com
